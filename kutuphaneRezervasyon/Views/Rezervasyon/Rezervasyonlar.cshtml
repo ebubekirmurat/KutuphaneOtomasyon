@@ -1,0 +1,145 @@
+﻿@using kutuphaneRezervasyon.Entities
+@model IEnumerable<Rezervasyon>
+
+@{
+    ViewData["Title"] = "Rezervasyonlar";
+}
+
+<style>
+    /* ----------- NAV BUTONLAR ----------- */
+    .nav-btn {
+        background: #2e3a87;
+        color: white !important;
+        padding: 8px 16px;
+        border-radius: 6px;
+        margin-right: 8px;
+        transition: .3s;
+        font-weight: 500;
+        text-decoration: none !important; /* ALT ÇİZGİYİ KALDIR */
+        display: inline-block;
+    }
+
+        .nav-btn:hover {
+            background: #1f2a60;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            text-decoration: none !important;
+        }
+
+    /* ----------- TABLO TEMA ----------- */
+    .styled-table {
+        border-radius: 12px;
+        overflow: hidden;
+        animation: fadeInTable 1.2s ease forwards;
+        background-color: #212b66 !important;
+        color: #e6e9ff !important;
+    }
+
+        .styled-table thead tr {
+            background-color: #2e3a87 !important;
+            color: #fff !important;
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .styled-table td, .styled-table th {
+            border-bottom: 1px solid rgba(255,255,255,0.15) !important;
+            padding: 14px;
+        }
+
+        .styled-table tbody tr:hover {
+            background-color: rgba(255,255,255,0.12) !important;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+
+    @@keyframes fadeInTable {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ----------- İPTAL BUTONU ----------- */
+    .cancel-btn {
+        transition: .25s;
+        font-weight: 500;
+        text-decoration: none !important;
+    }
+
+        .cancel-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 12px rgba(255,0,50,0.5);
+            text-decoration: none !important;
+        }
+
+    /* ----------- SAYFA BAŞLIĞI ----------- */
+    .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #2e3a87;
+        animation: fadeTitle .9s ease forwards;
+        opacity: 0;
+    }
+
+    @@keyframes fadeTitle {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<h2 class="page-title">📝 Rezervasyonlar</h2>
+
+<p>
+    <a asp-controller="Kitap" asp-action="Create" class="nav-btn">➕ Kitap Ekle</a>
+    <a asp-controller="Kitap" asp-action="Index" class="nav-btn">📘 Kitaplar</a>
+    <a asp-controller="Rezervasyon" asp-action="Index" class="nav-btn">📝 Rezervasyon Yap</a>
+    <a asp-controller="Rezervasyon" asp-action="Rezervasyonlar" class="nav-btn">📄 Rezervasyonlar</a>
+</p>
+
+<table class="table styled-table w-100">
+    <thead>
+        <tr>
+            <th>Kitap Adı</th>
+            <th>Yazar Adı</th>
+            <th>Yayınevi</th>
+            <th>Basım Yılı</th>
+            <th>Rezervasyon Tarihi</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.KitapAdi)</td>
+                <td>@Html.DisplayFor(modelItem => item.YazarAdi)</td>
+                <td>@Html.DisplayFor(modelItem => item.Yayinevi)</td>
+                <td>@Html.DisplayFor(modelItem => item.BasimYili)</td>
+                <td>@Html.DisplayFor(modelItem => item.Tarih)</td>
+
+                <td>
+                    <a asp-action="RezervasyonuIptalEt"
+                       asp-route-id="@item.RezervasyonId"
+                       class="btn btn-danger cancel-btn">
+                        Rezervasyon İptal
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

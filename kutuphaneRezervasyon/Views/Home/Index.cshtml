@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    
+    body {
+        background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        background-size: 400% 400%;
+        animation: bgAnimation 20s ease infinite;
+    }
+
+    @@keyframes bgAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    
+    .floating-books {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        margin-top: 30px;
+    }
+
+    .book {
+        position: absolute;
+        font-size: 50px;
+        opacity: 0.85;
+        animation: floatBooks 6s infinite ease-in-out;
+    }
+
+    @@keyframes floatBooks {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-25px) rotate(10deg);
+        }
+
+        100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+    }
+
+    .book:nth-child(1) {
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .book:nth-child(2) {
+        left: 30%;
+        animation-delay: .7s;
+    }
+
+    .book:nth-child(3) {
+        left: 50%;
+        animation-delay: 1.4s;
+    }
+
+    .book:nth-child(4) {
+        left: 70%;
+        animation-delay: 2.1s;
+    }
+
+    .book:nth-child(5) {
+        left: 85%;
+        animation-delay: 2.8s;
+    }
+
+    
+    .text-center h1 {
+        animation: fadeIn 1.8s ease forwards;
+        opacity: 0;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    
+    .animated-text {
+        display: inline-block;
+        font-size: 1.2rem;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid rgba(0,0,0,.8);
+        width: 0;
+        animation: typing 4s steps(60) forwards, blink .7s infinite;
+    }
+
+    @@keyframes typing {
+        from {
+            width: 0
+        }
+
+        to {
+            width: 100%
+        }
+    }
+
+    @@keyframes blink {
+        0% {
+            border-color: rgba(0,0,0,0);
+        }
+
+        50% {
+            border-color: rgba(0,0,0,.8);
+        }
+
+        100% {
+            border-color: rgba(0,0,0,0);
+        }
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Hoşgeldiniz</h1>
+
+    
+    <p class="animated-text">Üye Girişi Yaparak Kitap Rezervasyonu Yapabilirsiniz.</p>
+
+    
+    <div class="floating-books">
+        <div class="book">📚</div>
+        <div class="book">📘</div>
+        <div class="book">📖</div>
+        <div class="book">📗</div>
+        <div class="book">📕</div>
+    </div>
+</div>

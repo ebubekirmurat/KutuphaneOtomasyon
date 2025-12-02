@@ -1,0 +1,62 @@
+﻿<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+@model IEnumerable<kutuphaneAPI.Class.Kitap>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@* <h1>Kitaplar</h1> *@
+
+<p>
+    <a asp-controller="Kitap" asp-action="Create" class="btn btn-default">Kitap Ekle</a>
+    <a asp-controller="Kitap" asp-action="Index" class="btn btn-default">Kitaplar</a>
+    <a asp-controller="Rezervasyon" asp-action="Index" class="btn btn-default">Rezervasyon Yap</a>
+    <a asp-controller="Rezervasyon" asp-action="Rezervasyonlar" class="btn btn-default">Rezervasyonlar</a>
+</p>
+<table class="table table-dark table-hover w-100">
+    <thead>
+        <tr>
+            <th>
+               Kitap Adı
+            </th>
+            <th>
+                Yazar Adı
+            </th>
+            <th>
+               Yayınevi
+            </th>
+            <th>
+                Basım Yılı
+            </th>
+            <th>
+               Tarih
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KitapAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YazarAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Yayinevi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasimYili)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tarih)
+                </td>                
+                <td>
+                    <a asp-action="RezervasyonYap" class="btn btn-success" asp-route-id="@item.KitapId">Rezervasyon Yap</a>
+            </tr>
+        }
+    </tbody>
+</table>

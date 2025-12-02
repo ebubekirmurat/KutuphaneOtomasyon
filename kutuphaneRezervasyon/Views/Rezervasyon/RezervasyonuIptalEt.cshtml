@@ -1,0 +1,120 @@
+﻿@model kutuphaneRezervasyon.Entities.Rezervasyon
+
+@{
+    ViewData["Title"] = "Rezervasyon İptal";
+}
+
+<style>
+    /* ----------- SAYFA BAŞLIĞI ----------- */
+    .page-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #2e3a87;
+        margin-bottom: 20px;
+        animation: fadeTitle 0.8s ease forwards;
+        opacity: 0;
+    }
+
+    @@keyframes fadeTitle {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ----------- DETAY KUTUSU ----------- */
+    .details-container {
+        background-color: #212b66;
+        padding: 25px;
+        border-radius: 12px;
+        color: #e6e9ff;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        animation: fadeContainer 1s ease forwards;
+        opacity: 0;
+    }
+
+    @@keyframes fadeContainer {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    dl.row dt {
+        font-weight: 600;
+    }
+
+    dl.row dd {
+        margin-bottom: 10px;
+    }
+
+    /* ----------- BUTONLAR ----------- */
+    .btn-custom {
+        border-radius: 6px;
+        font-weight: 500;
+        transition: 0.25s;
+        text-decoration: none !important;
+        margin-right: 8px;
+    }
+
+    .btn-danger {
+        color: #ff5c5c;
+        border: 1px solid #ff5c5c;
+    }
+
+        .btn-danger:hover {
+            background-color: #ff5c5c;
+            color: #fff !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255,92,92,0.5);
+        }
+
+    .btn-secondary {
+        color: #b0b0b0;
+        border: 1px solid #b0b0b0;
+    }
+
+        .btn-secondary:hover {
+            background-color: #b0b0b0;
+            color: #212b66 !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(176,176,176,0.6);
+        }
+</style>
+
+<h2 class="page-title">⚠️ Rezervasyon İptali</h2>
+
+<div class="details-container">
+    <h4>Seçilen Rezervasyonu İptal Etmek İstediğinize Emin Misiniz?</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Kitap</dt>
+        <dd class="col-sm-10">@Model.KitapAdi</dd>
+
+        <dt class="col-sm-2">Yazar</dt>
+        <dd class="col-sm-10">@Model.YazarAdi</dd>
+
+        <dt class="col-sm-2">Yayınevi</dt>
+        <dd class="col-sm-10">@Model.Yayinevi</dd>
+
+        <dt class="col-sm-2">Basım Yılı</dt>
+        <dd class="col-sm-10">@Model.BasimYili</dd>
+    </dl>
+
+    <form asp-action="RezervasyonuIptalEt" method="post">
+        <input type="hidden" asp-for="RezervasyonId" />
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-danger btn-custom">İptal Et</button>
+        <a asp-action="Rezervasyonlar" class="btn btn-secondary btn-custom">Geri</a>
+    </form>
+</div>

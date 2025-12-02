@@ -1,0 +1,122 @@
+﻿@model kutuphaneAPI.Class.Kitap
+
+@{
+    ViewData["Title"] = "Kitap Ayrıntıları";
+}
+
+<style>
+    /* ----------- SAYFA BAŞLIĞI ----------- */
+    .page-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #2e3a87;
+        margin-bottom: 20px;
+        animation: fadeTitle 0.9s ease forwards;
+        opacity: 0;
+    }
+
+    @@keyframes fadeTitle {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ----------- DETAY KUTUSU ----------- */
+    .details-container {
+        background-color: #212b66;
+        padding: 25px;
+        border-radius: 12px;
+        color: #e6e9ff;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        animation: fadeContainer 1s ease forwards;
+        opacity: 0;
+    }
+
+    @@keyframes fadeContainer {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    dl.row dt {
+        font-weight: 600;
+    }
+
+    dl.row dd {
+        margin-bottom: 10px;
+    }
+
+    /* ----------- BUTONLAR ----------- */
+    .btn-custom {
+        border-radius: 6px;
+        font-weight: 500;
+        transition: 0.25s;
+        text-decoration: none !important;
+        margin-right: 8px;
+    }
+
+    .btn-outline-success {
+        color: #00ff9e;
+        border: 1px solid #00ff9e;
+    }
+
+        .btn-outline-success:hover {
+            background-color: #00ff9e;
+            color: #212b66 !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0,255,158,0.5);
+        }
+
+    .btn-outline-secondary {
+        color: #b0b0b0;
+        border: 1px solid #b0b0b0;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: #b0b0b0;
+            color: #212b66 !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(176,176,176,0.6);
+        }
+</style>
+
+<h2 class="page-title">📖 Kitap Ayrıntıları</h2>
+
+<div class="details-container">
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.KitapAdi)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.KitapAdi)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.YazarAdi)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.YazarAdi)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Yayinevi)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Yayinevi)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.BasimYili)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.BasimYili)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Tarih)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Tarih)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Durum)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Durum)</dd>
+    </dl>
+
+    <div class="mt-3">
+        <a asp-action="Edit" asp-route-id="@Model?.KitapId" class="btn btn-outline-success btn-custom">Güncelle</a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-custom">Listeye Geri Dön</a>
+    </div>
+</div>

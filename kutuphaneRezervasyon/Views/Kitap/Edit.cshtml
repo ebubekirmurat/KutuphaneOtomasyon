@@ -1,0 +1,166 @@
+﻿@model kutuphaneAPI.Class.Kitap
+
+@{
+    ViewData["Title"] = "Kitap Düzenle";
+}
+
+<style>
+    /* ----------- SAYFA BAŞLIĞI ----------- */
+    .page-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #2e3a87;
+        margin-bottom: 20px;
+        animation: fadeTitle 0.8s ease forwards;
+        opacity: 0;
+    }
+
+    @@keyframes fadeTitle {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ----------- FORM KONTEYNER ----------- */
+    .edit-container {
+        background-color: #212b66;
+        padding: 25px;
+        border-radius: 12px;
+        color: #e6e9ff;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        animation: fadeForm 1s ease forwards;
+        opacity: 0;
+    }
+
+    @@keyframes fadeForm {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ----------- FORM ELEMENTLERİ ----------- */
+    .form-control {
+        border-radius: 6px;
+        background-color: #2c397f;
+        color: #fff;
+        border: 1px solid #2c397f;
+    }
+
+        .form-control:focus {
+            border-color: #00ff9e;
+            box-shadow: 0 0 6px rgba(0,255,158,0.5);
+            background-color: #2c397f;
+            color: #fff;
+        }
+
+    label {
+        font-weight: 600;
+    }
+
+    /* ----------- BUTONLAR ----------- */
+    .btn-custom {
+        border-radius: 6px;
+        font-weight: 500;
+        transition: 0.25s;
+        text-decoration: none !important;
+        margin-right: 8px;
+    }
+
+    .btn-outline-success {
+        color: #00ff9e;
+        border: 1px solid #00ff9e;
+    }
+
+        .btn-outline-success:hover {
+            background-color: #00ff9e;
+            color: #212b66 !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0,255,158,0.5);
+        }
+
+    .btn-outline-secondary {
+        color: #b0b0b0;
+        border: 1px solid #b0b0b0;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: #b0b0b0;
+            color: #212b66 !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(176,176,176,0.6);
+        }
+
+    /* ----------- CHECKBOX STYLING ----------- */
+    .form-check-input {
+        accent-color: #00ff9e;
+    }
+</style>
+
+<h2 class="page-title">✏️ Kitap Düzenle</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" class="edit-container">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="KitapId" />
+
+            <div class="form-group mb-3">
+                <label asp-for="KitapAdi" class="control-label"></label>
+                <input asp-for="KitapAdi" class="form-control" />
+                <span asp-validation-for="KitapAdi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="YazarAdi" class="control-label"></label>
+                <input asp-for="YazarAdi" class="form-control" />
+                <span asp-validation-for="YazarAdi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Yayinevi" class="control-label"></label>
+                <input asp-for="Yayinevi" class="form-control" />
+                <span asp-validation-for="Yayinevi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="BasimYili" class="control-label"></label>
+                <input asp-for="BasimYili" class="form-control" />
+                <span asp-validation-for="BasimYili" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Tarih" class="control-label"></label>
+                <input asp-for="Tarih" class="form-control" />
+                <span asp-validation-for="Tarih" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check mb-3">
+                <input class="form-check-input" asp-for="Durum" />
+                <label class="form-check-label">@Html.DisplayNameFor(model => model.Durum)</label>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Güncelle" class="btn btn-outline-success btn-custom" />
+                <a asp-action="Index" class="btn btn-outline-secondary btn-custom">Listeye Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
