@@ -1,66 +1,76 @@
-📚 Kütüphane Rezervasyon Sistemi - README
+📚 Kütüphane Rezervasyon Sistemi (MVC + API + Code First)
 
-1. Proje Hakkında
-Kütüphane Rezervasyon Sistemi, kullanıcıların kitapları görüntüleyip rezervasyon yapabileceği bir web uygulamasıdır.  
-API desteği sayesinde başka uygulamalar da kitap ve rezervasyon verilerine erişebilir.  
+Bu proje, ASP.NET Core MVC ve Web API tabanlı bir kütüphane rezervasyon sistemidir. Entity Framework Core Code First yaklaşımı ile veritabanı modelleri doğrudan koddan oluşturulur ve yönetilir.
 
-**Özellikler:**  
-- Kitap ekleme, güncelleme, silme  
-- Rezervasyon yapma ve iptal etme  
-- API ile kitap ve rezervasyon CRUD  
-- Modern tema ve animasyonlar  
-- Responsive ve mobil uyumlu  
+✨ Özellikler
+Kullanıcılar için
 
----
+🔍 Kitap arama ve filtreleme
 
-2. Teknolojiler
-- ASP.NET Core MVC + Razor  
-- REST API endpoints  
-- Validation 
-- Bootstrap 5, CSS Animations  
+📖 Kitap detaylarını görüntüleme
 
----
+📝 Rezervasyon yapma ve iptal etme
 
- 3. API Endpoints
+➕ Kitap ekleme, düzenleme ve silme
 
-| Method | URL                       | Açıklama                   |
-|--------|---------------------------|----------------------------|
-| GET    | /api/Kitap                | Tüm kitapları listeler     |
-| GET    | /api/Kitap/{id}           | Kitap detaylarını getirir |
-| POST   | /api/Kitap                | Yeni kitap ekler           |
-| PUT    | /api/Kitap/{id}           | Kitap günceller            |
-| DELETE | /api/Kitap/{id}           | Kitap siler               |
+📊 Rezervasyonları görüntüleme ve yönetme
+
+🛠 Teknolojiler
+| Katman      | Teknoloji                                |
+|------------|------------------------------------------|
+| Backend    | ASP.NET Core MVC, Web API                 |
+| ORM        | Entity Framework Core (Code First)        |
+| Frontend   | Razor Pages / Bootstrap / JS              |
+| Veritabanı | SQL Server                                |
+| Diğer      | JWT Authentication, Swagger API Dokumentasyonu |
+
+🚀 Kurulum
+
+Projeyi klonlayın:
+
+git clone https://github.com/kullanici/kutuphane-rezervasyon.git
+cd kutuphane-rezervasyon
 
 
-4. Kullanım
+NuGet paketlerini yükleyin:
 
-1. Projeyi klonlayın:  
-```bash
-git clone <proje-url>
-Bağımlılıkları yükleyin ve çalıştırın:
-
-bash
-Kodu kopyala
 dotnet restore
+
+
+Veritabanını Code First ile oluşturun:
+
+dotnet ef database update
+
+
+Sunucuyu başlatın:
+
 dotnet run
-Tarayıcıdan erişim:
 
-arduino
-Kodu kopyala
+
+Tarayıcıda açın:
+
 https://localhost:5001
-API örnek çağrısı:
 
-http
-Kodu kopyala
-GET https://localhost:5001/api/Kitap
-5. Tasarım Özellikleri
-Animasyonlu sayfalar ve modern butonlar
 
-Hover efektli tablolar ve form alanları
+MVC: Kullanıcı arayüzü (Web sayfaları)
 
-Renk paleti: Lacivert / Mavi / Beyaz
+API: CRUD işlemleri ve rezervasyon işlemleri
 
-6. İleriye Dönük Geliştirmeler
-Kullanıcı yönetimi ve yetkilendirme
+Code First: Veritabanı tabloları DbContext ve model sınıflarından oluşturulur
 
-Rezervasyon takvimi ve bildirim sistemi
+🤝 Katkıda Bulunma
+
+Projeyi fork’layın.
+
+Yeni bir branch açın (git checkout -b ozellik-adi).
+
+Değişikliklerinizi commit’leyin (git commit -m 'Yeni özellik eklendi').
+
+Branch’i push’layın (git push origin ozellik-adi).
+
+Pull request oluşturun.
+
+📄 Lisans
+
+Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için LICENSE
+ dosyasına bakabilirsiniz
